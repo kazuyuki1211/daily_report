@@ -35,6 +35,12 @@
                                <fmt:formatDate value="${report.updated_at}" pattern="yyyy-MM-dd HH:mm:ss" />
                            </td>
                         </tr>
+                        <tr>
+                           <th>いいね数</th>
+                           <td>
+                               <c:out value="${report.like_count}"  />
+                           </td>
+                        </tr>
                    </tbody>
                  </table>
 
