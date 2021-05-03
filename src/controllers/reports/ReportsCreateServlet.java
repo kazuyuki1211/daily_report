@@ -34,6 +34,7 @@ public class ReportsCreateServlet extends HttpServlet {
           Report r = new Report();
 
           r.setEmployee((Employee)request.getSession().getAttribute("login_employee"));
+          //従業員情報をセット
 
           Date report_date = new Date(System.currentTimeMillis());
           String rd_str = request.getParameter("report_date");
@@ -41,17 +42,16 @@ public class ReportsCreateServlet extends HttpServlet {
           if(rd_str != null && !rd_str.equals("")) {
               report_date = Date.valueOf(request.getParameter("report_date"));
           }
-          r.setReport_date(report_date);
-          r.setTitle(request.getParameter("title"));
-          r.setContent(request.getParameter("content"));
+          r.setReport_date(report_date);    //日報の日付をセット
+          r.setTitle(request.getParameter("title"));   //日報のタイトルをセット
+          r.setContent(request.getParameter("content"));  //日報の内容をセット
+          r.setLike_count(0);  //いいね数の初期値０をセット
 
-          String likec = request.getParameter("like_count");
-
-          if(likec != null && !likec.equals("")){
 
           Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-          r.setCreated_at(currentTime);
-          r.setUpdated_at(currentTime);
+          r.setCreated_at(currentTime);   //登録日時をセット
+          r.setUpdated_at(currentTime);   //更新日時をセット
+
 
           List<String> errors = ReportValidator.validate(r);
           if(errors.size() > 0) {
@@ -78,4 +78,4 @@ public class ReportsCreateServlet extends HttpServlet {
     }
 
 }
-}
+
