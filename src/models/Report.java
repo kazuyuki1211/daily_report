@@ -129,7 +129,10 @@ public class Report {
         return like_count;
     }
 
-    public void setLike_count(Integer like_count){
-        this.like_count = like_count;
+    public void setLike_count(Integer like_count) {
+            this.like_count = like_count;
+        }
+
     }
-}
+
+
